@@ -46,3 +46,15 @@
     display: flex;
     flex-wrap: wrap;
   }
+  .load-more {
+    display: none;
+    margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 32px;
+      margin-top: 32px;
+      padding: 16px;
+      border: 1px solid green;
+      border-radius: 8px;
+      background-color: yellow;
+  }
+
