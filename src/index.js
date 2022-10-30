@@ -63,7 +63,8 @@ function createImageEl(hits) {
   simpleLightbox();
   scroll()
   // =========показываем кнопку "загрузить еще" и кнопку "наверх" ====
-  refs.loadMoreBtn.style =
+  //refs.loadMoreBtn.style =
+  refs.loadMoreBtn.style.display = 'flex';
     ' display: flex;  margin-left: auto;  margin-right: auto; margin-bottom:32px; margin-top:32px; padding:16px; border: 1px solid green; border-radius:8px; background-color: yellow';
   refs.goUpBtn.style =
     'position: fixed; bottom: 32px;right: 32px; border-radius: 50%; width: 80px; height: 80px; background-color: lime; color: blue; border: 1px solid blue';
