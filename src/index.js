@@ -60,7 +60,7 @@ function createImageEl(hits) {
   // console.log(refs.galleryEl);
   // ==========вызываем библиотеку лайтбокс для красивой галлереи============
   simpleLightbox();
-  scroll();
+  scroll()
   // =========показываем кнопку "загрузить еще" и кнопку "наверх" ====
   refs.loadMoreBtn.style =
     ' display: flex;  margin-left: auto;  margin-right: auto; margin-bottom:32px; margin-top:32px; padding:16px; border: 1px solid green; border-radius:8px; background-color: yellow';
@@ -120,6 +120,7 @@ function clearImagesContainer() {
   refs.galleryEl.innerHTML = '';
   refs.loadMoreBtn.style = 'display: none';
   refs.goUpBtn.style = ' display: none';
+
 }
 // ===функция, для плавного скрола, можно сразу проскролить до конца страницы,
 // указав top: cardHeight 40,
@@ -129,7 +130,7 @@ function scroll() {
     .firstElementChild.getBoundingClientRect();
   window.scrollBy({
     // top: cardHeight * 40,
-    top: cardHeight * 1,
+    top: cardHeight * 0,
     behavior: 'smooth',
   });
 }
