@@ -10,6 +10,7 @@ import ImageApiService from './axiosPixabay';
 
 // установила симпллайтбокс, нотифай и аксиос зарегестрировалась на  пиксабей
 // нашла ссылки на элементы формы и кнопок
+let totalAmountOfPics = 0;
 const refs = {
   form: document.querySelector('#search-form'),
   submitBtn: document.querySelector('#search-form button'),
@@ -82,6 +83,7 @@ async function onSubmit(e) {
       return;
     } else {
       const response = await imageApiService.fetchFotos();
+      totalAmountOfPics = response.data.totalHits;
       const {
         data: { hits, total, totalHits },
       } = response;
@@ -93,6 +95,10 @@ async function onSubmit(e) {
       } else {
         Notify.success(`Hooray! We found ${totalHits} images.`);
         createImageEl(hits);
+        if (hits.length < 40) {
+          refs.loadMoreBtn.style.visibility = 'hidden';
+          Notify.failure("We're sorry, but you've reached the end of search results.")
+        }
       }
     }
   } catch (error) {
@@ -106,6 +112,10 @@ async function onLoadMoreClick(e) {
   // ===== запрет браузеру на перезагрузку страницы
   e.preventDefault();
   // console.log('работает');
+  if (imageApiService.page === Math.ceil(totalAmountOfPics / 40)) {
+    refs.loadMoreBtn.style.visibility = 'hidden';
+    Notify.failure("We're sorry, but you've reached the end of search results.");
+  }
   const response = await imageApiService.fetchFotos();
   const {
     data: { hits },
