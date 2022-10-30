@@ -71,14 +71,15 @@ function createImageEl(hits) {
 async function onSubmit(e) {
   // ===== запрет браузеру на перезагрузку страницы=======
   e.preventDefault();
-  imageApiService.searchQuery = e.currentTarget.elements.searchQuery.value;
+  imageApiService.searchQuery = e.currentTarget.elements.searchQuery.value.trim();
   console.log(imageApiService.searchQuery);
   // =========очищаем страницу перед новым запросом============
   imageApiService.resetPage();
   try {
     if (imageApiService.searchQuery === '') {
       clearImagesContainer();
-      Notify.warning('Enter your search query');
+      Notify.warning('Enter your search query')
+      return;
     } else {
       const response = await imageApiService.fetchFotos();
       const {
